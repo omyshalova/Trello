@@ -10,7 +10,6 @@ import lombok.ToString;
 @Getter
 @ToString
 
-public class UserDTO {
-    private String email;
-    private String password;
+public class BoardDTO {
+    private String boardTitle;
 }
