@@ -28,7 +28,7 @@ public class PersonalBoardPage extends BasePage{
     WebElement btnDeleteBoardConfirm;
 
     public boolean isTextInElementPresent_nameBoard(String text){
-        return isTextInElementPresent(nameBoard, text, 5);
+        return isTextInElementPresent(nameBoard, text, 20);
     }
 
     public BoardsPage deleteBoard(BoardDTO board) {

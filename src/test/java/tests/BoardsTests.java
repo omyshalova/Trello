@@ -10,6 +10,7 @@ import pages.BoardsPage;
 import pages.HomePage;
 import pages.PersonalBoardPage;
 
+import java.lang.reflect.Method;
 import java.util.Random;
 
 public class BoardsTests extends ApplicationManager {
@@ -17,7 +18,9 @@ public class BoardsTests extends ApplicationManager {
             .email("omyshalova@gmail.com")
             .password("Qw1235813.")
             .build();
+
     BoardsPage boardsPage = new BoardsPage(getDriver());
+
 
     @BeforeMethod
     public void loginBeforeBoards() {
@@ -28,19 +31,17 @@ public class BoardsTests extends ApplicationManager {
     }
 
     @Test
-    public void createBoardPositive() {
+    public void createBoardPositive(Method method) {
         int i = new Random().nextInt(1000);
         BoardDTO board = BoardDTO.builder()
                 .boardTitle("OMysh-" + i)
                 .build();
-        //HomePage homePage = new HomePage(getDriver());
+        logger.info("{} starts with board title --> {}", method.getName(), board.getBoardTitle());
         Assert.assertTrue(
-                //homePage.clickBtnLogin()
-                //.typeEmail(user)
-                //.typePassword(user)
-                boardsPage.typeBoardTitle(board)
+                boardsPage
+                        .typeBoardTitle(board)
                         .clickBtnCreateSubmitPositive()
-                        .isTextInElementPresent_nameBoard(board.getBoardTitle()));
+                        .isTextInElementPresent_nameBoard(board.getBoardTitle())) ;
     }
 
     @Test()
@@ -48,13 +49,11 @@ public class BoardsTests extends ApplicationManager {
         BoardDTO board = BoardDTO.builder()
                 .boardTitle("  ")
                 .build();
-        HomePage homePage = new HomePage(getDriver());
-        Assert.assertFalse(homePage.clickBtnLogin()
-                .typeEmail(user)
-                .typePassword(user)
-                .typeBoardTitle(board)
-                .clickBtnCreateSubmitNegative()
-                .isElementClickable_btnCreateSubmit(), "element is clickable");
+        Assert.assertFalse(
+                boardsPage
+                        .typeBoardTitle(board)
+                        .clickBtnCreateSubmitNegative()
+                        .isElementClickable_btnCreateSubmit(), "element is clickable");
     }
 
     @Test
