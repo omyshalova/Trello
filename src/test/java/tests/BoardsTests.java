@@ -3,8 +3,10 @@ package tests;
 import dto.BoardDTO;
 import dto.UserDTO;
 import manager.ApplicationManager;
+import manager.TestNGListener;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.BoardsPage;
 import pages.HomePage;
@@ -12,6 +14,8 @@ import pages.PersonalBoardPage;
 
 import java.lang.reflect.Method;
 import java.util.Random;
+
+@Listeners(TestNGListener.class)
 
 public class BoardsTests extends ApplicationManager {
     UserDTO user = UserDTO.builder()
@@ -55,6 +59,21 @@ public class BoardsTests extends ApplicationManager {
                         .clickBtnCreateSubmitNegative()
                         .isElementClickable_btnCreateSubmit(), "element is clickable");
     }
+
+//    @Test()
+//    public void createBoardNegative_emptyBoardTitle_Alex() {
+//        BoardDTO board = BoardDTO.builder()
+//                .boardTitle("  ")
+//                .build();
+//        HomePage homePage = new HomePage(getDriver());
+//        Assert.assertFalse(homePage.clickBtnLogin()
+//                .typeEmail(user)
+//                .typePassword(user)
+//                .typeBoardTitle(board)
+//                .clickBtnCreateSubmitNegative()
+//                .isElementClickable_btnCreateSubmit(), "element is clickable")
+//        ;
+//    }
 
     @Test
     public void deleteBoardPositiveTest() {

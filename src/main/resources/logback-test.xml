@@ -2,7 +2,7 @@
     <!-- Insert the current time formatted as "yyyyMMdd'T'HHmmss" under
        the key "bySecond" into the logger context. This value will be
        available to all subsequent configuration elements. -->
-    <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+    <timestamp key="bySecond" datePattern="yyMMdd'-'HH.mm.ss"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">  <!-- console output -->
         <encoder>

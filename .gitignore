@@ -12,6 +12,9 @@ target/
 *.iml
 *.ipr
 src/main/resources/test_logs
+src/main/resources/screenshots
+src/main/resources/photos
+
 
 ### Eclipse ###
 .apt_generated

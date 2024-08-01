@@ -1,4 +1,3 @@
-
 package pages;
 
 import dto.BoardDTO;
@@ -28,11 +27,12 @@ public class PersonalBoardPage extends BasePage{
     WebElement btnDeleteBoardConfirm;
 
     public boolean isTextInElementPresent_nameBoard(String text){
-        return isTextInElementPresent(nameBoard, text, 20);
+        return isTextInElementPresent(nameBoard, text, 10);
     }
 
     public BoardsPage deleteBoard(BoardDTO board) {
         btnDots.click();
+        pause(5000);
         btnCloseBoard.click();
         btnCloseConfirm.click();
         btnDeleteBoard.click();
