@@ -30,8 +30,11 @@ public class BoardsPage extends BasePage{
     WebElement btnManageAccount;
 
     public BoardsPage typeBoardTitle(BoardDTO board){
+        pause(100);
         btnCreateBoard.click();
+        pause(100);
         inputBoardTitle.sendKeys(board.getBoardTitle());
+        pause(100);
         return this;
     }
 
