@@ -8,15 +8,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertiesReader implements Path {
+
     public static String getProperty(String fileName, String key){
         Properties properties = new Properties();
         try {
-            FileInputStream fileInputStream = new FileInputStream(PROPERTIES_PATH+"fileName");
+            FileInputStream fileInputStream = new FileInputStream(PROPERTIES_PATH+fileName);
             properties.load(fileInputStream);
             return properties.getProperty(key);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
 }

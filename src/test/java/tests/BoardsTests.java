@@ -35,18 +35,23 @@ public class BoardsTests extends ApplicationManager {
                 .typePassword(user);
     }
 
+
     @Test
     public void createBoardPositive(Method method) {
         int i = new Random().nextInt(1000);
         BoardDTO board = BoardDTO.builder()
                 .boardTitle("OMysh-" + i)
                 .build();
-        logger.info("{} starts with board title --> {}", method.getName(), board.getBoardTitle());
+        logger.info(method.getName()+ "starts with board title --> "+ board.getBoardTitle());
+        //HomePage homePage = new HomePage(getDriver());
         Assert.assertTrue(
-                boardsPage
-                        .typeBoardTitle(board)
+                //homePage.clickBtnLogin()
+                //.typeEmail(user)
+                //.typePassword(user)
+                boardsPage.typeBoardTitle(board)
                         .clickBtnCreateSubmitPositive()
-                        .isTextInElementPresent_nameBoard(board.getBoardTitle())) ;
+                        .isTextInElementPresent_nameBoard(board.getBoardTitle()))
+        ;
     }
 
     @Test()
@@ -92,4 +97,6 @@ public class BoardsTests extends ApplicationManager {
             Assert.fail("board isn't create");
         }
     }
+
+
 }

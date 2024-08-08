@@ -2,12 +2,15 @@ package pages;
 
 import dto.BoardDTO;
 import manager.TestNGListener;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.testng.annotations.Listeners;
+
+import java.util.List;
 
 @Listeners(TestNGListener.class)
 public class BoardsPage extends BasePage{
@@ -58,4 +61,16 @@ public class BoardsPage extends BasePage{
         btnManageAccount.click();
         return new ProfileAndVisibility(driver);
     }
+
+    public BoardsPage deleteAllBoards(){
+        List<WebElement> listBoards = driver.findElements(
+                By.xpath("//li[@class='boards-page-board-section-list-item']"));
+        System.out.println("size list --> " + listBoards.size());
+        listBoards.get(1).click();
+        return this;
+    }
+
+
+
+
 }
